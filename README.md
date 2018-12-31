@@ -6,6 +6,16 @@ android 音视频播放sdk
 ### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta1) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta1/link)
 
 	implementation 'ywl.ywl5320:wlmedia:1.0.0-beta1'
+### 配置NDK编译平台:
+
+	defaultConfig {
+		...
+		ndk {
+		    abiFilter("armeabi-v7a")
+		    abiFilter("x86")
+		}
+		...
+	}
 
 ## 播放音乐
 <img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/3.png"/>
