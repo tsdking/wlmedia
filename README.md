@@ -16,6 +16,38 @@ android 音视频播放sdk
 		}
 		...
 	}
+### 接入代码
+
+	<com.ywl5320.wlmedia.widget.WlSurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    
+    <com.ywl5320.wlmedia.widget.WlTextureView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+	
+	WlMedia wlMedia = new WlMedia();
+	wlMedia.setPlayModel(WlPlayModel.PLAYMODEL_AUDIO_VIDEO);//声音视频都播放
+	wlMedia.setCodecType(WlCodecType.CODEC_MEDIACODEC);//优先使用硬解码
+	wlMedia.setMute(WlMute.MUTE_CENTER);//立体声
+	wlMedia.setVolume(80);//80%音量
+	wlMedia.setPlayPitch(1.0f);//正常速度
+	wlMedia.setPlaySpeed(1.0f);//正常音调
+	wlMedia.setTimeOut(30);//网络流超时时间
+	wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
+	
+	//异步准备完成后开始播放
+	wlMedia.setOnPreparedListener(new WlOnPreparedListener() {
+            @Override
+            public void onPrepared() {
+                wlMedia.start();//开始播放
+                double duration = wlMedia.getDuration();//获取时长
+            }
+        });
+	
+	//设置url源
+	wlMedia.setSource("/storage/sdcard1/精灵宝可梦：就决定是你了.720p.国日粤三语.BD中字[最新电影www.66ys.tv].mp4");
+	wlMedia.prepared();//异步准备
 
 ## 实例图片
 ### 播放音乐
