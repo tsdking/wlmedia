@@ -77,7 +77,11 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 	wlMedia.setSource("/storage/sdcard1/精灵宝可梦：就决定是你了.720p.国日粤三语.BD中字[最新电影www.66ys.tv].mp4");
 	wlMedia.prepared();//异步准备
 	
-## 其他API 可看类：WlMedia.java
+## 4、其他API 可看类：WlMedia.java
+
+## [我的视频课程（基础）：《（NDK）FFmpeg打造Android万能音频播放器》](https://edu.csdn.net/course/detail/6842)
+## [我的视频课程（进阶）：《（NDK）FFmpeg打造Android视频播放器》](https://edu.csdn.net/course/detail/8036)
+## [我的视频课程（编码直播推流）：《Android视频编码和直播推流》](https://edu.csdn.net/course/detail/8942)
 
 ##### create By：ywl5320 2019-01-01
 
