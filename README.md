@@ -54,7 +54,7 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 	
-	WlMedia wlMedia = new WlMedia();
+	WlMedia wlMedia = new WlMedia();// 可支持多实例播放（主要对于音频，视频实际验证效果不佳）
 	wlMedia.setPlayModel(WlPlayModel.PLAYMODEL_AUDIO_VIDEO);//声音视频都播放
 	wlMedia.setCodecType(WlCodecType.CODEC_MEDIACODEC);//优先使用硬解码
 	wlMedia.setMute(WlMute.MUTE_CENTER);//立体声
