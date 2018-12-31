@@ -43,10 +43,12 @@ android 音视频播放sdk
 
 ### 接入代码
 
+	// surfaceview 一般播放使用
 	<com.ywl5320.wlmedia.widget.WlSurfaceView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     
+	// textureview 需要做透明、移动、旋转等使用
     <com.ywl5320.wlmedia.widget.WlTextureView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -73,6 +75,9 @@ android 音视频播放sdk
 	//设置url源
 	wlMedia.setSource("/storage/sdcard1/精灵宝可梦：就决定是你了.720p.国日粤三语.BD中字[最新电影www.66ys.tv].mp4");
 	wlMedia.prepared();//异步准备
+	
+	
+create By：ywl5320 2019-01-01
 
 
 
