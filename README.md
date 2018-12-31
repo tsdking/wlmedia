@@ -77,8 +77,9 @@ android 音视频播放sdk
 	wlMedia.setSource("/storage/sdcard1/精灵宝可梦：就决定是你了.720p.国日粤三语.BD中字[最新电影www.66ys.tv].mp4");
 	wlMedia.prepared();//异步准备
 	
-	
-create By：ywl5320 2019-01-01
+## 其他API 可看类：WlMedia.java
+
+##### create By：ywl5320 2019-01-01
 
 
 
