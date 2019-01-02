@@ -3,6 +3,7 @@ package com.ywl5320.wlmedia.sample;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.ywl5320.wlmedia.listener.WlOnCompleteListener;
 import com.ywl5320.wlmedia.listener.WlOnErrorListener;
 import com.ywl5320.wlmedia.listener.WlOnLoadListener;
 import com.ywl5320.wlmedia.listener.WlOnPauseListener;
+import com.ywl5320.wlmedia.listener.WlOnPcmDataListener;
 import com.ywl5320.wlmedia.listener.WlOnPreparedListener;
 import com.ywl5320.wlmedia.listener.WlOnTimeInfoListener;
 import com.ywl5320.wlmedia.util.WlTimeUtil;
@@ -53,6 +55,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlMedia.setPlayPitch(1.0f);//正常速度
         wlMedia.setPlaySpeed(1.0f);//正常音调
         wlMedia.setTimeOut(30);//网络流超时时间
+        wlMedia.setShowPcmData(true);//回调返回音频pcm数据
         wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
 
         tvVolume.setText("音量：" + wlMedia.getVolume() + "%");
@@ -141,11 +144,23 @@ public class PlayVideoActivity extends AppCompatActivity {
             }
         });
 
+        wlMedia.setOnPcmDataListener(new WlOnPcmDataListener() {
+            @Override
+            public void onPcmInfo(int bit, int channel, int samplerate) {
+                Log.d("ywl5320", "pcm info samplerate :" + samplerate);
+            }
+
+            @Override
+            public void onPcmData(int size, byte[] data) {
+                Log.d("ywl5320", "pcm data size :" + size);
+            }
+        });
+
     }
 
     public void play(View view) {
 
-        wlMedia.setSource("/storage/sdcard1/精灵宝可梦：就决定是你了.720p.国日粤三语.BD中字[最新电影www.66ys.tv].mp4");
+        wlMedia.setSource("/storage/sdcard1/四平青年之喋血曼谷.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
         wlMedia.prepared();
 
     }

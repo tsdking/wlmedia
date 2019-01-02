@@ -16,10 +16,10 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 ### 播放音乐
 <img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/3.png"/>
 
-### 竖屏播放
+### 竖屏播放（自动保持宽高比）
 <img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/1.png"/>
 
-### 横屏播放
+### 横屏播放（自动保持宽高比）
 <img width="640" height="360" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/2.png"/>
 
 ## 3、调用方式
@@ -62,6 +62,7 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 	wlMedia.setPlayPitch(1.0f);//正常速度
 	wlMedia.setPlaySpeed(1.0f);//正常音调
 	wlMedia.setTimeOut(30);//网络流超时时间
+	wlMedia.setShowPcmData(true);//回调返回音频pcm数据
 	wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
 	
 	//异步准备完成后开始播放
