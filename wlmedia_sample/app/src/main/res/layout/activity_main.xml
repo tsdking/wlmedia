@@ -16,7 +16,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="播放视频"
+        android:text="播放视频(url)"
         android:onClick="play_video"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="播放视频(Buffer)"
+        android:onClick="play_video_buffer"/>
 
 </LinearLayout>

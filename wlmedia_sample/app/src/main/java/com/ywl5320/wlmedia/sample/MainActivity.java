@@ -25,4 +25,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void play_video_buffer(View view) {
+        Intent intent = new Intent(this, PlayVideoBufferActivity.class);
+        startActivity(intent);
+    }
 }

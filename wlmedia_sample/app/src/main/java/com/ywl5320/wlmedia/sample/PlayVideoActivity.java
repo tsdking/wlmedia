@@ -19,6 +19,7 @@ import com.ywl5320.wlmedia.listener.WlOnPauseListener;
 import com.ywl5320.wlmedia.listener.WlOnPcmDataListener;
 import com.ywl5320.wlmedia.listener.WlOnPreparedListener;
 import com.ywl5320.wlmedia.listener.WlOnTimeInfoListener;
+import com.ywl5320.wlmedia.listener.WlOnVideoViewListener;
 import com.ywl5320.wlmedia.util.WlTimeUtil;
 import com.ywl5320.wlmedia.widget.WlSurfaceView;
 
@@ -33,7 +34,6 @@ public class PlayVideoActivity extends AppCompatActivity {
     private WlSurfaceView wlSurfaceView;
 
     private double duration;
-    private boolean seek = false;
     private int seek_per = 0;
 
     @Override
@@ -69,13 +69,12 @@ public class PlayVideoActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                seek = true;
+                wlMedia.seekStart(true);
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 wlMedia.seek(seek_per);
-                seek = false;
             }
         });
 
@@ -108,39 +107,50 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlMedia.setOnTimeInfoListener(new WlOnTimeInfoListener() {
             @Override
             public void onTimeInfo(double time) {
-                if(!seek)
-                {
-                    seekBar.setProgress((int) (time * 100 / duration));
-                    tvTime.setText(WlTimeUtil.secdsToDateFormat((int)time, (int)duration) + "/" + WlTimeUtil.secdsToDateFormat((int)duration, (int)duration));
-                }
+                seekBar.setProgress((int) (time * 100 / duration));
+                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)time, (int)duration) + "/" + WlTimeUtil.secdsToDateFormat((int)duration, (int)duration));
             }
         });
 
         wlMedia.setOnLoadListener(new WlOnLoadListener() {
             @Override
             public void onLoad(boolean load) {
-
+                if(load)
+                {
+                    Log.d("ywl5320", "加载中");
+                }
+                else
+                {
+                    Log.d("ywl5320", "播放中");
+                }
             }
         });
 
         wlMedia.setOnErrorListener(new WlOnErrorListener() {
             @Override
             public void onError(int code, String msg) {
-
+                Log.d("ywl5320", "code is :" + code + ", msg is :" + msg);
             }
         });
 
         wlMedia.setOnCompleteListener(new WlOnCompleteListener() {
             @Override
             public void onComplete() {
-
+                Log.d("ywl5320", "播放完成");
             }
         });
 
         wlMedia.setOnPauseListener(new WlOnPauseListener() {
             @Override
             public void onPause(boolean pause) {
-
+                if(pause)
+                {
+                    Log.d("ywl5320", "暂停中");
+                }
+                else
+                {
+                    Log.d("ywl5320", "继续播放");
+                }
             }
         });
 
@@ -156,11 +166,29 @@ public class PlayVideoActivity extends AppCompatActivity {
             }
         });
 
+        wlSurfaceView.setOnVideoViewListener(new WlOnVideoViewListener() {
+            @Override
+            public void initSuccess() {
+                wlMedia.setSource("/storage/sdcard1/wmzb.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
+                wlMedia.prepared();
+            }
+
+            @Override
+            public void moveSlide(double value) {
+                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)value, (int)wlMedia.getDuration()) + "/" + WlTimeUtil.secdsToDateFormat((int)wlMedia.getDuration(), (int)wlMedia.getDuration()));
+            }
+
+            @Override
+            public void movdFinish(double value) {
+                wlMedia.seek((int) value);
+            }
+        });
+
     }
 
     public void play(View view) {
 
-        wlMedia.setSource("/storage/sdcard1/四平青年之喋血曼谷.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
+        wlMedia.setSource("/storage/sdcard1/wmzb.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
         wlMedia.prepared();
 
     }
@@ -178,14 +206,19 @@ public class PlayVideoActivity extends AppCompatActivity {
     }
 
     public void change(View view) {
-        wlMedia.setSource("");
+        wlMedia.setSource("/storage/sdcard1/wmzb.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
         wlMedia.next();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        wlMedia.pause();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        wlMedia.stop();
         wlMedia.onDestroy();
     }
 

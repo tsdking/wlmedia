@@ -3,6 +3,7 @@ package com.ywl5320.wlmedia.sample;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -28,7 +29,6 @@ public class PlayAudioActivity extends AppCompatActivity {
     private TextView tvVolume;
 
     private double duration;
-    private boolean seek = false;
     private int seek_per = 0;
 
     @Override
@@ -60,13 +60,12 @@ public class PlayAudioActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                seek = true;
+                wlMedia.seekStart(false);
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 wlMedia.seek(seek_per);
-                seek = false;
             }
         });
 
@@ -99,39 +98,50 @@ public class PlayAudioActivity extends AppCompatActivity {
         wlMedia.setOnTimeInfoListener(new WlOnTimeInfoListener() {
             @Override
             public void onTimeInfo(double time) {
-                if(!seek)
-                {
-                    seekBar.setProgress((int) (time * 100 / duration));
-                    tvTime.setText(WlTimeUtil.secdsToDateFormat((int)time, (int)duration) + "/" + WlTimeUtil.secdsToDateFormat((int)duration, (int)duration));
-                }
+                seekBar.setProgress((int) (time * 100 / duration));
+                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)time, (int)duration) + "/" + WlTimeUtil.secdsToDateFormat((int)duration, (int)duration));
             }
         });
 
         wlMedia.setOnLoadListener(new WlOnLoadListener() {
             @Override
             public void onLoad(boolean load) {
-
+                if(load)
+                {
+                    Log.d("ywl5320", "加载中");
+                }
+                else
+                {
+                    Log.d("ywl5320", "播放中");
+                }
             }
         });
 
         wlMedia.setOnErrorListener(new WlOnErrorListener() {
             @Override
             public void onError(int code, String msg) {
-
+                Log.d("ywl5320", "code is :" + code + ", msg is :" + msg);
             }
         });
 
         wlMedia.setOnCompleteListener(new WlOnCompleteListener() {
             @Override
             public void onComplete() {
-
+                Log.d("ywl5320", "播放完成");
             }
         });
 
         wlMedia.setOnPauseListener(new WlOnPauseListener() {
             @Override
             public void onPause(boolean pause) {
-
+                if(pause)
+                {
+                    Log.d("ywl5320", "暂停中");
+                }
+                else
+                {
+                    Log.d("ywl5320", "继续播放");
+                }
             }
         });
 
@@ -157,14 +167,13 @@ public class PlayAudioActivity extends AppCompatActivity {
     }
 
     public void change(View view) {
-        wlMedia.setSource("");
+        wlMedia.setSource("http://mpge.5nd.com/2015/2015-11-26/69708/1.mp3");
         wlMedia.next();
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        wlMedia.stop();
+    protected void onDestroy() {
+        super.onDestroy();
         wlMedia.onDestroy();
     }
 
