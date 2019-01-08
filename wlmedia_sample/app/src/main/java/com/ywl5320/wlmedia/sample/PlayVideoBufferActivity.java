@@ -23,7 +23,10 @@ import com.ywl5320.wlmedia.listener.WlOnVideoViewListener;
 import com.ywl5320.wlmedia.util.WlTimeUtil;
 import com.ywl5320.wlmedia.widget.WlSurfaceView;
 
-public class PlayVideoActivity extends AppCompatActivity {
+import java.io.File;
+import java.io.FileInputStream;
+
+public class PlayVideoBufferActivity extends AppCompatActivity {
 
     private WlMedia wlMedia;
 
@@ -55,7 +58,8 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlMedia.setPlayPitch(1.0f);//正常速度
         wlMedia.setPlaySpeed(1.0f);//正常音调
         wlMedia.setTimeOut(30);//网络流超时时间
-        wlMedia.setShowPcmData(true);//回调返回音频pcm数据
+//        wlMedia.setShowPcmData(true);//回调返回音频pcm数据
+        wlMedia.setBufferSource(true);
         wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
 
         tvVolume.setText("音量：" + wlMedia.getVolume() + "%");
@@ -165,32 +169,52 @@ public class PlayVideoActivity extends AppCompatActivity {
                 Log.d("ywl5320", "pcm data size :" + size);
             }
         });
-
-        wlSurfaceView.setOnVideoViewListener(new WlOnVideoViewListener() {
-            @Override
-            public void initSuccess() {
-                wlMedia.setSource("/storage/sdcard1/wmzb.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
-                wlMedia.prepared();
-            }
-
-            @Override
-            public void moveSlide(double value) {
-                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)value, (int)wlMedia.getDuration()) + "/" + WlTimeUtil.secdsToDateFormat((int)wlMedia.getDuration(), (int)wlMedia.getDuration()));
-            }
-
-            @Override
-            public void movdFinish(double value) {
-                wlMedia.seek((int) value);
-            }
-        });
-
     }
 
     public void play(View view) {
 
-        wlMedia.setSource("/storage/sdcard1/test2.h264");
-        wlMedia.prepared();
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    File file = new File("/storage/sdcard1/test2.h264");
+                    FileInputStream fi = new FileInputStream(file);
+                    byte[] buffer = new byte[1024 * 32];
+                    int buffersize = 0;
+                    int bufferQueueSize = 0;
+                    while(true)
+                    {
+                        if(wlMedia.isPlaying())
+                        {
+                            if(bufferQueueSize < 100)
+                            {
+                                buffersize = fi.read(buffer);
+                                bufferQueueSize = wlMedia.putBufferSource(buffer, buffersize);
+                                while(bufferQueueSize < 0)
+                                {
+                                    bufferQueueSize = wlMedia.putBufferSource(buffer, buffersize);
+                                }
+                            }
+                            else
+                            {
+                                bufferQueueSize = wlMedia.putBufferSource(buffer, 0);
+                            }
+                            Log.d("ywl5320", "bufferQueueSize is " + bufferQueueSize);
+                            sleep(1000);
+                        }
+                        else
+                        {
+                            break;
+                        }
 
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+        wlMedia.prepared();
     }
 
     public void stop(View view) {
@@ -206,7 +230,7 @@ public class PlayVideoActivity extends AppCompatActivity {
     }
 
     public void change(View view) {
-        wlMedia.setSource("/storage/sdcard1/wmzb.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
+        wlMedia.setSource("/storage/sdcard1/七大罪：天空的囚人.720p.BD中英双字[最新电影www.66ys.tv].mkv");
         wlMedia.next();
     }
 
