@@ -206,7 +206,7 @@ public class PlayVideoActivity extends AppCompatActivity {
     }
 
     public void change(View view) {
-        wlMedia.setSource("/storage/sdcard1/wmzb.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
+        wlMedia.setSource("/storage/sdcard1/恐龙王.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
         wlMedia.next();
     }
 
