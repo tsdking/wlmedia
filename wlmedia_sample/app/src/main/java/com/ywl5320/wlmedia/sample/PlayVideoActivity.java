@@ -55,7 +55,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlMedia.setPlayPitch(1.0f);//正常速度
         wlMedia.setPlaySpeed(1.0f);//正常音调
         wlMedia.setTimeOut(30);//网络流超时时间
-        wlMedia.setShowPcmData(true);//回调返回音频pcm数据
+//        wlMedia.setShowPcmData(true);//回调返回音频pcm数据
         wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
 
         tvVolume.setText("音量：" + wlMedia.getVolume() + "%");
@@ -169,7 +169,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlSurfaceView.setOnVideoViewListener(new WlOnVideoViewListener() {
             @Override
             public void initSuccess() {
-                wlMedia.setSource("/storage/sdcard1/wmzb.1080p.HD国语中字无水印[最新电影www.66ys.tv].mp4");
+                wlMedia.setSource("rtp://192.168.31.111:5005");
                 wlMedia.prepared();
             }
 
@@ -188,7 +188,7 @@ public class PlayVideoActivity extends AppCompatActivity {
 
     public void play(View view) {
 
-        wlMedia.setSource("/storage/sdcard1/test2.h264");
+        wlMedia.setSource("udp://192.168.31.158:5004");
         wlMedia.prepared();
 
     }
