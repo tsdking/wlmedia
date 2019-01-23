@@ -30,7 +30,6 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 		...
 		ndk {
             abiFilter("arm64-v8a")
-            abiFilter("armeabi")
             abiFilter("armeabi-v7a")
             abiFilter("x86")
             abiFilter("x86_64")
