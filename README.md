@@ -3,9 +3,9 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 
 ## 1、Usage
 
-### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta8) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta8/link)
+### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta9) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta9/link)
 
-	implementation 'ywl.ywl5320:wlmedia:1.0.0-beta8'
+	implementation 'ywl.ywl5320:wlmedia:1.0.0-beta9'
 
 
 ## 2、实例图片
