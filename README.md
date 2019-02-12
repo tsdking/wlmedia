@@ -3,15 +3,15 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 
 ## 1、Usage
 
-### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta9) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta9/link)
+### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta11) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta11/link)
 
-	implementation 'ywl.ywl5320:wlmedia:1.0.0-beta9'
+	implementation 'ywl.ywl5320:wlmedia:1.0.0-beta11'
 
 
 ## 2、实例图片
 
 ### 播放视频
-<img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/4.png"/>
+<img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/4.gif"/>
 
 ### 播放音乐
 <img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/3.png"/>
@@ -29,20 +29,20 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 	defaultConfig {
 		...
 		ndk {
-            abiFilter("arm64-v8a")
-            abiFilter("armeabi-v7a")
-            abiFilter("x86")
-            abiFilter("x86_64")
-        }
+		    abiFilter("arm64-v8a")
+		    abiFilter("armeabi-v7a")
+		    abiFilter("x86")
+		    abiFilter("x86_64")
+		}
 		...
 	}
 	
 ### 基本权限
 
 	<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 ### 接入代码
 
@@ -71,6 +71,7 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 	wlMedia.setOnPreparedListener(new WlOnPreparedListener() {
             @Override
             public void onPrepared() {
+	    	// wlMedia.setVideoScale(WlScaleType.SCALE_16_9);//设置16:9的视频比例
                 wlMedia.start();//开始播放
                 double duration = wlMedia.getDuration();//获取时长
             }

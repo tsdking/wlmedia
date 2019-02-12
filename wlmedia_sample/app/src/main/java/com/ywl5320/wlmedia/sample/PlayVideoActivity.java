@@ -12,6 +12,7 @@ import com.ywl5320.wlmedia.WlMedia;
 import com.ywl5320.wlmedia.enums.WlCodecType;
 import com.ywl5320.wlmedia.enums.WlMute;
 import com.ywl5320.wlmedia.enums.WlPlayModel;
+import com.ywl5320.wlmedia.enums.WlScaleType;
 import com.ywl5320.wlmedia.listener.WlOnCompleteListener;
 import com.ywl5320.wlmedia.listener.WlOnErrorListener;
 import com.ywl5320.wlmedia.listener.WlOnLoadListener;
@@ -69,7 +70,7 @@ public class PlayVideoActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                wlMedia.seekStart(true);
+                wlMedia.seekStart(false);
             }
 
             @Override
@@ -99,6 +100,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlMedia.setOnPreparedListener(new WlOnPreparedListener() {
             @Override
             public void onPrepared() {
+                wlMedia.setVideoScale(WlScaleType.SCALE_16_9);
                 wlMedia.start();
                 duration = wlMedia.getDuration();
             }
@@ -169,7 +171,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlSurfaceView.setOnVideoViewListener(new WlOnVideoViewListener() {
             @Override
             public void initSuccess() {
-                wlMedia.setSource("rtp://192.168.31.111:5005");
+                wlMedia.setSource("/mnt/shared/Other/testvideo/楚乔传第一集.mp4");
                 wlMedia.prepared();
             }
 
@@ -188,7 +190,7 @@ public class PlayVideoActivity extends AppCompatActivity {
 
     public void play(View view) {
 
-        wlMedia.setSource("udp://192.168.31.158:5004");
+        wlMedia.setSource("/mnt/shared/Other/testvideo/楚乔传第一集.mp4");
         wlMedia.prepared();
 
     }
@@ -256,5 +258,25 @@ public class PlayVideoActivity extends AppCompatActivity {
 
     public void right(View view) {
         wlMedia.setMute(WlMute.MUTE_RIGHT);
+    }
+
+    public void full(View view) {
+        wlMedia.setVideoScale(WlScaleType.SCALE_FULL_SURFACE);
+    }
+
+    public void sdefault(View view) {
+        wlMedia.setVideoScale(WlScaleType.SCALE_DEFAULT);
+    }
+
+    public void s_4_3(View view) {
+        wlMedia.setVideoScale(WlScaleType.SCALE_4_3);
+    }
+
+    public void s_16_9(View view) {
+        wlMedia.setVideoScale(WlScaleType.SCALE_16_9);
+    }
+
+    public void custom(View view) {
+        wlMedia.setVideoScale(300, 200, 0);
     }
 }
