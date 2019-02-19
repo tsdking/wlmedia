@@ -110,7 +110,7 @@ public class PlayVideoActivity extends AppCompatActivity {
             @Override
             public void onTimeInfo(double time) {
                 seekBar.setProgress((int) (time * 100 / duration));
-                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)time, (int)duration) + "/" + WlTimeUtil.secdsToDateFormat((int)duration, (int)duration));
+                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)time) + "/" + WlTimeUtil.secdsToDateFormat((int)duration));
             }
         });
 
@@ -177,7 +177,7 @@ public class PlayVideoActivity extends AppCompatActivity {
 
             @Override
             public void moveSlide(double value) {
-                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)value, (int)wlMedia.getDuration()) + "/" + WlTimeUtil.secdsToDateFormat((int)wlMedia.getDuration(), (int)wlMedia.getDuration()));
+                tvTime.setText(WlTimeUtil.secdsToDateFormat((int)value) + "/" + WlTimeUtil.secdsToDateFormat((int)wlMedia.getDuration()));
             }
 
             @Override
