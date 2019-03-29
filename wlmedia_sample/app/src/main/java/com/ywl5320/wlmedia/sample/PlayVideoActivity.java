@@ -55,7 +55,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlMedia.setVolume(80);//80%音量
         wlMedia.setPlayPitch(1.0f);//正常速度
         wlMedia.setPlaySpeed(1.0f);//正常音调
-        wlMedia.setTimeOut(30);//网络流超时时间
+        wlMedia.setRtspTimeOut(30);//网络流超时时间
 //        wlMedia.setShowPcmData(true);//回调返回音频pcm数据
         wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
 

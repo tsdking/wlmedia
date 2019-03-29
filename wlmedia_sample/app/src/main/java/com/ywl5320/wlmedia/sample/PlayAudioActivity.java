@@ -47,7 +47,7 @@ public class PlayAudioActivity extends AppCompatActivity {
         wlMedia.setVolume(80);
         wlMedia.setPlayPitch(1.0f);
         wlMedia.setPlaySpeed(1.0f);
-        wlMedia.setTimeOut(30);
+        wlMedia.setRtspTimeOut(30);
 
         tvVolume.setText("音量：" + wlMedia.getVolume() + "%");
         seekBarVolume.setProgress(wlMedia.getVolume());

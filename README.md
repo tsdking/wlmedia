@@ -3,9 +3,9 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 
 ## 1、Usage
 
-### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta15) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta15/link)
+### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta16) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta16/link)
 
-	implementation 'ywl.ywl5320:wlmedia:1.0.0-beta15'
+	implementation 'ywl.ywl5320:wlmedia:1.0.0-beta16'
 
 
 ## 2、实例图片
@@ -46,12 +46,12 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 
 ### 接入代码
 
-	// surfaceview 一般播放使用
+	// WlSurfaceView 一般播放使用
 	<com.ywl5320.wlmedia.widget.WlSurfaceView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     
-	// textureview 需要做透明、移动、旋转等使用
+	// WlTextureView 需要做透明、移动、旋转等使用
     <com.ywl5320.wlmedia.widget.WlTextureView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -63,7 +63,7 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 	wlMedia.setVolume(80);//80%音量
 	wlMedia.setPlayPitch(1.0f);//正常速度
 	wlMedia.setPlaySpeed(1.0f);//正常音调
-	wlMedia.setTimeOut(30);//网络流超时时间
+	wlMedia.setRtspTimeOut(30);//网络流超时时间
 	wlMedia.setShowPcmData(true);//回调返回音频pcm数据
 	wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
 	
