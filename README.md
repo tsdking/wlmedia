@@ -44,7 +44,7 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-### 接入代码
+### 接入代码（SDK API level:28）
 
 	// WlSurfaceView 一般播放使用
 	<com.ywl5320.wlmedia.widget.WlSurfaceView
