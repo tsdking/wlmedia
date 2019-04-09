@@ -178,7 +178,7 @@ public class PlayVideoBufferActivity extends AppCompatActivity {
             public void run() {
                 super.run();
                 try {
-                    File file = new File("/storage/sdcard1/test.h264");
+                    File file = new File("/storage/sdcard1/测试.h265");
                     FileInputStream fi = new FileInputStream(file);
                     byte[] buffer = new byte[1024 * 32];
                     int buffersize = 0;
