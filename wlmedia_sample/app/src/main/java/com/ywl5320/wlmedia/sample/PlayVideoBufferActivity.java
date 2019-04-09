@@ -178,7 +178,7 @@ public class PlayVideoBufferActivity extends AppCompatActivity {
             public void run() {
                 super.run();
                 try {
-                    File file = new File("/storage/sdcard1/test2.h264");
+                    File file = new File("/storage/sdcard1/test.h264");
                     FileInputStream fi = new FileInputStream(file);
                     byte[] buffer = new byte[1024 * 32];
                     int buffersize = 0;
@@ -201,7 +201,7 @@ public class PlayVideoBufferActivity extends AppCompatActivity {
                                 bufferQueueSize = wlMedia.putBufferSource(buffer, 0);
                             }
                             Log.d("ywl5320", "bufferQueueSize is " + bufferQueueSize);
-                            sleep(1000);
+//                            sleep(40);
                         }
                         else
                         {
