@@ -13,7 +13,7 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 ### 播放视频
 <img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/4.gif"/>
 
-### 播放视频（byte[]形式 如：h264 h265等）
+### 播放byte[]（如：标准的h264 h265等）
 <img width="360" height="640" src="https://github.com/wanliyang1990/wlmedia/blob/master/img/h265.png"/>
 
 ### 播放音乐
