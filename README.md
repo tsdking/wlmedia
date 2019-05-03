@@ -1,6 +1,11 @@
 # wlmedia
 android 音视频播放SDK，几句代码即可实现音视频播放功能~
 
+## [我的视频课程（基础）：《（NDK）FFmpeg打造Android万能音频播放器》](https://edu.csdn.net/course/detail/6842)
+## [我的视频课程（进阶）：《（NDK）FFmpeg打造Android视频播放器》](https://edu.csdn.net/course/detail/8036)
+## [我的视频课程（编码直播推流）：《Android视频编码和直播推流》](https://edu.csdn.net/course/detail/8942)
+## [我的视频课程（C++ OpenGL）：《Android C++ OpenGL》](https://edu.csdn.net/course/detail/19367)
+
 ## 1、Usage
 
 ### Gradle: [ ![Download](https://api.bintray.com/packages/ywl5320/maven/wlmedia/images/download.svg?version=1.0.0-beta16) ](https://bintray.com/ywl5320/maven/wlmedia/1.0.0-beta16/link)
@@ -86,9 +91,7 @@ android 音视频播放SDK，几句代码即可实现音视频播放功能~
 	
 ## 4、其他API 可看类：WlMedia.java
 
-## [我的视频课程（基础）：《（NDK）FFmpeg打造Android万能音频播放器》](https://edu.csdn.net/course/detail/6842)
-## [我的视频课程（进阶）：《（NDK）FFmpeg打造Android视频播放器》](https://edu.csdn.net/course/detail/8036)
-## [我的视频课程（编码直播推流）：《Android视频编码和直播推流》](https://edu.csdn.net/course/detail/8942)
+
 
 ##### create By：ywl5320 2019-01-01
 
