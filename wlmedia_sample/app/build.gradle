@@ -6,8 +6,8 @@ android {
         applicationId "com.ywl5320.wlmedia.sample"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 17
+        versionName "1.0.0-beta17"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
 	ndk {
@@ -35,5 +35,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'ywl.ywl5320:wlmedia:1.0.0-beta16'
+    implementation 'ywl.ywl5320:wlmedia:1.0.0-beta17'
 }

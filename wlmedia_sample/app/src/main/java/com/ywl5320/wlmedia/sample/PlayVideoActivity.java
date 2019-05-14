@@ -12,6 +12,7 @@ import com.ywl5320.wlmedia.WlMedia;
 import com.ywl5320.wlmedia.enums.WlCodecType;
 import com.ywl5320.wlmedia.enums.WlMute;
 import com.ywl5320.wlmedia.enums.WlPlayModel;
+import com.ywl5320.wlmedia.enums.WlSampleRate;
 import com.ywl5320.wlmedia.enums.WlScaleType;
 import com.ywl5320.wlmedia.listener.WlOnCompleteListener;
 import com.ywl5320.wlmedia.listener.WlOnErrorListener;
@@ -57,6 +58,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         wlMedia.setPlaySpeed(1.0f);//正常音调
         wlMedia.setRtspTimeOut(30);//网络流超时时间
 //        wlMedia.setShowPcmData(true);//回调返回音频pcm数据
+        wlMedia.setSampleRate(WlSampleRate.RATE_44100);//设置音频采样率为指定值（返回的PCM就是这个采样率）
         wlSurfaceView.setWlMedia(wlMedia);//给视频surface设置播放器
 
         tvVolume.setText("音量：" + wlMedia.getVolume() + "%");
